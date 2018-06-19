@@ -8,17 +8,17 @@ angular.module('ethExplorer')
         updateTXList();
         updateStats();
 
-        web3.eth.filter("latest", function(error, result){
-          if (!error) {
-		console.log("got new block")
-            updateBlockList();
-            updateTXList();
-            updateStats();
-            $scope.$apply();
-          } else {
-		console.log("error filter:", error)
-		}
-        });
+    //     web3.eth.filter("latest", function(error, result){
+    //       if (!error) {
+		// console.log("got new block")
+    //         updateBlockList();
+    //         updateTXList();
+    //         updateStats();
+    //         $scope.$apply();
+    //       } else {
+		// console.log("error filter:", error)
+		// }
+    //     });
 
         $scope.processRequest= function(){
             var requestStr = $scope.ethRequest;
