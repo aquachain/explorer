@@ -124,7 +124,7 @@ angular.module('ethExplorer')
                   if(blockBefore!==undefined){
                   $scope.blocktimeAverage1 = ((blockNewest.timestamp - blockPast.timestamp)/range).toFixed(2);
                   }
-                  $scope.range2=1000;
+/*                  $scope.range2=1000;
                   range = $scope.range2;
                   var blockPast = web3.eth.getBlock(Math.max($scope.blockNum - range,0));
                   if(blockBefore!==undefined){
@@ -136,12 +136,12 @@ angular.module('ethExplorer')
                   if(blockBefore!==undefined){
                   $scope.blocktimeAverage3 = ((blockNewest.timestamp - blockPast.timestamp)/range).toFixed(2);
                   }
-                  $scope.range4=100000;
+                  $scope.range4=40000;
                   range = $scope.range4;
                   var blockPast = web3.eth.getBlock(Math.max($scope.blockNum - range,0));
                   if(blockBefore!==undefined){
                   $scope.blocktimeAverage4 = ((blockNewest.timestamp - blockPast.timestamp)/range).toFixed(2);
-                  }
+                  } */
 
                   range = $scope.blockNum;
                   var blockPast = web3.eth.getBlock(1);
@@ -178,16 +178,18 @@ angular.module('ethExplorer')
             var currentTXnumber = web3.eth.blockNumber;
             $scope.txNumber = currentTXnumber;
             $scope.recenttransactions = [];
-            for (var i=0; i < 10 && currentTXnumber - i >= 0; i++) {
-              txa = web3.eth.getTransactionFromBlock(currentTXnumber - i)
-              if (txa == null) {
-                continue
-              }
+	    for (var i=0; i < 20 && currentTXnumber - i >= 0; i++) {
+            blockloop: 
+	      for (var j=0; j < 10; j++) {
+                txa = web3.eth.getTransactionFromBlock(currentTXnumber - i, j)
+                if (txa == null) {
+                	break blockloop;
+                }
 
-              $scope.recenttransactions.push(txa);
-
+                $scope.recenttransactions.push(txa);
+	      
             }
-        }
+        }}
 
         function updateBlockList() {
             var currentBlockNumber = web3.eth.blockNumber;
