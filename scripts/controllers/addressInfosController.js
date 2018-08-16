@@ -24,6 +24,10 @@ angular.module('ethExplorer')
                     .then(function(result){
                     	$scope.balance = web3.fromWei(result).toNumber();
                     });
+            	getAddressPendingBalance()
+                    .then(function(result){
+                    	$scope.pendingbalance = web3.fromWei(result).toNumber();
+                    });
             	getAddressTransactionCount()
 	                .then(function(result){
 	                	$scope.txCount = result;
@@ -45,6 +49,14 @@ angular.module('ethExplorer')
             function getAddressBalance(){
                 var deferred = $q.defer();
                 web3.eth.getBalance($scope.addressId, function(error, result) {
+                    if(!error){deferred.resolve(result);}
+                    else{deferred.reject(error);}
+                });
+                return deferred.promise;
+            }
+            function getAddressPendingBalance(){
+                var deferred = $q.defer();
+                web3.eth.getBalance($scope.addressId, 'pending', function(error, result) {
                     if(!error){deferred.resolve(result);}
                     else{deferred.reject(error);}
                 });
