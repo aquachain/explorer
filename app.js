@@ -1,21 +1,11 @@
+'use strict';
 
-var GETH_HOSTNAME	= "c.onical.org";	// sometimes working
-//var GETH_HOSTNAME = "127.0.0.1"; // for local
+//var AQUA_RPCHOST = "http://127.0.0.1:8543"; // for local
+// var AQUA_RPCHOST	= "https://c.onical.org";	// sometimes working
+var AQUA_RPCHOST        = "https://tx.aquacha.in/api";	// sometimes working
+
 var APP_HOSTNAME 	= "aquachain.github.io";
 
-var GETH_RPCPORT  	= 443; 		// for geth --rpcport GETH_RPCPORT
-var APP_PORT 		= 443;
-
-// this is creating the corrected geth command
-var WL=window.location;
-var geth_command	= "aquachain --rpc --rpcaddr "+ GETH_HOSTNAME + " --rpcport " + GETH_RPCPORT +'\
- --rpcapi "" ' + ' --rpccorsdomain "' + WL.protocol +"//" + WL.host + '"';
-
-////////////////////////////////////////////////////
-//end AltSheets changes
-
-
-'use strict';
 
 angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
 
@@ -89,24 +79,25 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
             //$locationProvider.html5Mode(true);
     }])
     .run(function($rootScope) {
-        var web3 = require('web3');
-
-        // begin AltSheets changes
-        web3.setProvider(new web3.providers.HttpProvider("https://"+GETH_HOSTNAME+":"+GETH_RPCPORT));
-        // end AltSheets changes
-
-        $rootScope.web3=web3;
-        // MetaMask injects its own web3 instance in all pages, override it
+	// MetaMask injects its own web3 instance in all pages, override it
         // as it might be not compatible with the one used here
-        if (window.web3)
-            window.web3 = web3;
+        
+	if (typeof web3 !== 'undefined') {
+	  //web3 = new Web3(web3.currentProvider);
+	  web3 = undefined
+	}
+	  // Set the provider you want from Web3.providers
+         console.log("using web3 host:", AQUA_RPCHOST)
+         var web3 = new Web3(new Web3.providers.HttpProvider(AQUA_RPCHOST));
+	
+        $rootScope.web3=web3;
+	window.web3 = web3
         function sleepFor( sleepDuration ){
             var now = new Date().getTime();
             while(new Date().getTime() < now + sleepDuration){ /* do nothing */ }
         }
         var connected = true;
         if(!web3.isConnected()) {
-            $('#connectwarning').modal({keyboard:false,backdrop:'static'})
-            $('#connectwarning').modal('show')
-        }
+        	console.log("cant connect")
+	}
     });
