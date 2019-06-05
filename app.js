@@ -101,3 +101,10 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
         	console.log("cant connect")
 	}
     });
+
+$(document).ready(function(){
+		$("#rpchost" ).on('change', function() { 
+				  AQUA_RPCHOST = $(this).val();
+				  console.log("switched RPC host:", AQUA_RPCHOST);
+				  })
+});
