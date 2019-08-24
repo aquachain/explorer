@@ -1,8 +1,8 @@
 'use strict';
 
 //var AQUA_RPCHOST = "http://127.0.0.1:8543"; // for local
-// var AQUA_RPCHOST	= "https://c.onical.org";	// sometimes working
-var AQUA_RPCHOST        = "https://tx.aquacha.in/api";	// sometimes working
+var AQUA_RPCHOST	= "https://c.onical.org";	// sometimes working
+//var AQUA_RPCHOST        = "https://tx.aquacha.in/api";	// sometimes working
 
 var APP_HOSTNAME 	= "aquachain.github.io";
 
