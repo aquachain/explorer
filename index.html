@@ -1,9 +1,116 @@
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="ethExplorer" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="ethExplorer" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="ethExplorer" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="ethExplorer" class="no-js"> <!--<![endif]-->
 <head>
-<meta http-equiv="refresh" content="2;url=https://blockscout.aqua.signal2noi.se" />
-<title>Aquachain Explorer Moved</title>
+  <base href="/explorer/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Aquachain Block Explorer</title>
+  <meta name="description" content="Aquachain Crypto currency Block Explorer">
+  <meta name="keywords" content="aquachain,crypto,currency,cryptocurrency,explorer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
-<body>
-This page has moved. Click <a href="https://blockscout.aqua.signal2noi.se">here</a> to go to the new page, and update your bookmarks and references.
+<body style="background: #899499; /* Old browsers */ background: -moz-radial-gradient(center, ellipse cover, #899499 0%, #596a72 100%); /* FF3.6-15 */ background: -webkit-radial-gradient(center, ellipse cover, #899499 0%,#596a72 100%); /* Chrome10-25,Safari5.1-6 */ background: radial-gradient(ellipse at center, #899499 0%,#596a72 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#899499', endColorstr='#596a72',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */">
+<nav class="navbar navbar-dark navbar-static-top" role="navigation">
+  <div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars"></i>
+        </button>
+        <!-- <img src='https://aquachain.github.io/img/a100.png' alt='AQUACHAIN EXPLORER'> -->
+        <a class="navbar-brand" href="./#/">AQUACHAIN EXPLORER</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="./#/">Home</a></li>
+            <li><a href="./#/chain">Blockchain Info</a></li>
+            <li><a href="https://aquachain.github.io/aqua_checkBalance/">Check Balance Quick</a></li>
+            <li><a style="font-weight: bolder;" href="https://github.com/aquanetwork/aquachain/releases/latest">Stay Updated</a></li>
+            <li><a href="https://pool.aquachain-foundation.org/">Mining pool</a></li>
+            <li><a href="https://aquachain.github.io/">Website</a></li>
+            <li><a href="https://github.com/aquanetwork/aquachain/wiki/Basics">Wiki</a></li>
+            <li><a href="https://github.com/aquanetwork/aquachain">Source Code</a></li>
+            <li><a href="https://t.me/AquaCrypto">Community</a></li>
+       </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style:"width:72vw;">
+    <form class="navbar-formx" style="width: 100%;clear: both;"  ng-controller="mainCtrl" ng-submit="processRequest()" name="search_form" role="search">
+        <div class="input-group">
+            <input type="text" placeholder="Tx Hash, Address, or Block #" name="requestType" required  ng-model="ethRequest"  class="form-control searchi">
+            <div class="input-group-btn">
+                <button class="btn btn-primary btn-blue" type="submit"><i class="fa fa-search">Explore</i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+  <div ng-view></div>
+
+<!--Libs-->
+  <!--  <script src="https://use.fontawesome.com/9376283190.js"></script> -->
+  <script src="bower_components/web3/dist/web3.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--Core-->
+  <script src="app.js"></script>
+
+<!--Controllers-->
+  <script src="scripts/controllers/mainController.js"></script>
+  <script src="scripts/controllers/addressInfosController.js"></script>
+  <script src="scripts/controllers/chainInfosController.js"></script>
+  <script src="scripts/controllers/blockInfosController.js"></script>
+  <script src="scripts/controllers/transactionInfosController.js"></script>
+<!--jQuery-->
+
+  <!--Services-->
+    <div id="connectwarning" class="modal fade" role="dialog">
+
+    	<!-- begin AltSheets -->
+        <div id="connectwarning-dialog" class="modal-dialog">
+        <!-- end AltSheets -->
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <center><div class="modal-header">
+                    <h4 class="modal-title">Down for maintenance</h4>
+                </div>
+                <div class="modal-body">
+                    <code><p id="modaltext">Visit https://t.me/AquaCrypto for more info</p></code>
+                </div></center>
+            </div>
+        </div>
+    </div>
+<div class="footer styledfoot">
+    <footer><br />
+            <p>Known pools: <a href="https://aquacha.in/status/miners">aquacha.in/status/miners</a></p>
+	    AQUACHAIN EXPLORER 2018 | <a href="http://github.com/carsenk/explorer">Source</a><br />
+            <br />
+    </footer>
+	<select id="rpchost">
+		<option value="https://tx.aquacha.in/api">aquacha.in</option>
+		<option value="https://c.onical.org">c.onical.org</option>
+		<option value="http://127.0.0.1:8543">local AQUA RPC</option>
+	</select>
+
+<script> 
+
+</script>
+
+
+</div>
+
 </body>
 </html>
