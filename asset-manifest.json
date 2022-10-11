@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/explorer/static/css/main.e8abc552.css",
-    "main.js": "/explorer/static/js/main.e074855b.js",
+    "main.css": "/explorer/static/css/main.69230860.css",
+    "main.js": "/explorer/static/js/main.3307bbe6.js",
     "static/js/963.714c587a.chunk.js": "/explorer/static/js/963.714c587a.chunk.js",
     "static/js/448.4e02548d.chunk.js": "/explorer/static/js/448.4e02548d.chunk.js",
     "static/js/320.80667476.chunk.js": "/explorer/static/js/320.80667476.chunk.js",
@@ -28,13 +28,12 @@
     "static/js/548.9c4eb1ef.chunk.js": "/explorer/static/js/548.9c4eb1ef.chunk.js",
     "static/js/836.6554abf5.chunk.js": "/explorer/static/js/836.6554abf5.chunk.js",
     "static/js/299.a2c68645.chunk.js": "/explorer/static/js/299.a2c68645.chunk.js",
-    "static/media/TerminusTTF-4.49.2.ttf": "/explorer/static/media/TerminusTTF-4.49.2.46b3ff7bfffaf4b93926.ttf",
     "static/media/FiraCode-Regular.woff": "/explorer/static/media/FiraCode-Regular.a25d3a54ca0de3944eb7.woff",
     "static/media/FiraCode-Regular.woff2": "/explorer/static/media/FiraCode-Regular.bf5ea52fa0094c7f7621.woff2",
     "index.html": "/explorer/index.html"
   },
   "entrypoints": [
-    "static/css/main.e8abc552.css",
-    "static/js/main.e074855b.js"
+    "static/css/main.69230860.css",
+    "static/js/main.3307bbe6.js"
   ]
 }
