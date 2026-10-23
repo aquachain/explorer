@@ -1,0 +1,17 @@
+{
+    "name": "Aquachain Explorer",
+    "title": "Aquachain Explorer",
+    "supportedNetworks": [
+      61717561,
+      617175613,
+      56
+    ],
+    "defaultNetwork": 61717561,
+    "WsUrl": "/ws",
+    "RpcUrl": "/",
+    "IndexUrl": "/idb/aqua",
+    "FourbiteEndpoint": "/4byte/",
+    "SupplyEndpoint": "/supply",
+    "noteStorage": "",
+    "BaseApiUrl": "https://c.onical.org"
+  }
